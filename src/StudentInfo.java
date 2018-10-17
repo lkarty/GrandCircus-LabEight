@@ -4,12 +4,12 @@ public class StudentInfo {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		boolean stop = false;
 
 		// Arrays for choices
 		String[] names = { "Wierd Al", "Eddie", "Londa", "Frieda", "Toby", "Grace Jones" };
 		String[] homeTown = { "Weed", "Erie", "Estral Beach", "Centralia", "Tampa", "Zzyzx" };
 		String[] favFood = { "Bannanas", "Meat", "Ginger", "Burritos", "Tostadas", "breakfast at Yeman Cafe" };
-
 
 		System.out.println("Welcome to our class!");
 
@@ -22,7 +22,9 @@ public class StudentInfo {
 
 
 			// Ask to choose student. Validate input
-		int studentNum = Validator.getInt(sc, "\nPick a Student(1-6): ", 1, 6);
+			int studentNum = Validator.getInt(sc, "\nPick a Student(1-6): ", 1, names.length);
+
+			while (stop == false) {
 		System.out.print("Student " + studentNum + " is " + names[studentNum - 1]
 				+ ". What else would you like to know about " + names[studentNum - 1]);
 		
@@ -41,6 +43,15 @@ public class StudentInfo {
 			System.out.println("That data does not exisit. Please enter \"hometown\" or \"favorite food\".");
 
 			}
+				System.out.println("\nWould you like to know more about " + names[studentNum - 1] + " (y/n)?");
+
+				if (sc.next().equalsIgnoreCase("Y")) {
+					stop = false;
+				} else {
+					stop = true;
+				}
+			}
+
 			System.out.println("\nDo you want to continue? (y/n)");
 
 		} while (sc.next().equalsIgnoreCase("Y"));
