@@ -5,12 +5,14 @@ public class StudentInfo {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		String[] names = { "Wierd Al", "Fred", "Londa", "Frieda", "Toby", "Connie" };
+		String[] names = { "Wierd Al", "Eddie", "Londa", "Frieda", "Toby", "Grace Jones" };
 		String[] homeTown = { "Weed", "Erie", "Estral Beach", "Centralia", "Tampa", "Zzyzx" };
-		String[] favFood = { "Bannanas", "Tacos", "Ginger", "Burritos", "Tostadas", "Yeman Cafe breakfast" };
+		String[] favFood = { "Bannanas", "Meat", "Ginger", "Burritos", "Tostadas", "breakfast at Yeman Cafe" };
 
 
 		System.out.println("Welcome to our class!");
+
+		do {
 
 		for (int i = 0; i < names.length; i++) { // length could be either array cause same size
 			System.out.print((i + 1) + ". " + names[i] + " ");
@@ -22,10 +24,9 @@ public class StudentInfo {
 				+ ". What else would you like to know about " + names[studentNum - 1]);
 		
 
-
 		String studentInfo = Validator.getString(sc, "? (enter \"hometown\" or \"favorite food\") \n");
+		// ask about space and equals
 
-		String[] ff = studentInfo.split(" ");
 
 		if (studentInfo.equalsIgnoreCase("hometown")) {
 			System.out.println(names[studentNum - 1] + "'s hometown is " + homeTown[studentNum - 1] + ".");
@@ -33,9 +34,16 @@ public class StudentInfo {
 		} else if (studentInfo.equalsIgnoreCase("favorite")) {
 			System.out.println(names[studentNum - 1] + "'s favorite food is " + favFood[studentNum - 1] + ".");
 		} else {
-			System.out.println("error");
+			System.out.println("That data does not exisit. Please enter \"hometown\" or \"favorite food\".");
 
-		}
+			}
+			System.out.println("\nDo you want to continue? (y/n)");
+
+		} while (sc.next().equalsIgnoreCase("Y"));
+
+		System.out.println("Thanks!");
+
+		sc.close();
 
 
 	}
