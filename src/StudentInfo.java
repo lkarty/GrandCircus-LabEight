@@ -5,6 +5,7 @@ public class StudentInfo {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
+		// Arrays for choices
 		String[] names = { "Wierd Al", "Eddie", "Londa", "Frieda", "Toby", "Grace Jones" };
 		String[] homeTown = { "Weed", "Erie", "Estral Beach", "Centralia", "Tampa", "Zzyzx" };
 		String[] favFood = { "Bannanas", "Meat", "Ginger", "Burritos", "Tostadas", "breakfast at Yeman Cafe" };
@@ -14,11 +15,13 @@ public class StudentInfo {
 
 		do {
 
+			// Assign indexes to student names
 		for (int i = 0; i < names.length; i++) { // length could be either array cause same size
 			System.out.print((i + 1) + ". " + names[i] + " ");
 		}
 
 
+			// Ask to choose student. Validate input
 		int studentNum = Validator.getInt(sc, "\nPick a Student(1-6): ", 1, 6);
 		System.out.print("Student " + studentNum + " is " + names[studentNum - 1]
 				+ ". What else would you like to know about " + names[studentNum - 1]);
@@ -28,6 +31,7 @@ public class StudentInfo {
 		// ask about space and equals
 
 
+			// Check for hometown or favorite food
 		if (studentInfo.equalsIgnoreCase("hometown")) {
 			System.out.println(names[studentNum - 1] + "'s hometown is " + homeTown[studentNum - 1] + ".");
 
